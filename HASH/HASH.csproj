@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3B2A8B73-F255-4341-91AE-3D191CFBD5E7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HASH</RootNamespace>
+    <AssemblyName>HASH</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>HASH.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\HASH.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <DocumentationFile>bin\x86\Debug\HASH.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <DocumentationFile>bin\x86\Release\HASH.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CRC16.cs" />
+    <Compile Include="CRC32.cs" />
+    <Compile Include="Config\DBConfig.cs" />
+    <Compile Include="UI\DBEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\DBEdit.Designer.cs">
+      <DependentUpon>DBEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExtensionAttribute.cs" />
+    <Compile Include="FileSystem.cs" />
+    <Compile Include="UI\frmDBConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmDBConfig.Designer.cs">
+      <DependentUpon>frmDBConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmError.Designer.cs">
+      <DependentUpon>frmError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsoleTools\GB.cs" />
+    <Compile Include="ConsoleTools\Genesis.cs" />
+    <Compile Include="UI\HashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\HashForm.Designer.cs">
+      <DependentUpon>HashForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hex.cs" />
+    <Compile Include="ConsoleTools\iNesHeader.cs" />
+    <Compile Include="LinqStub.cs" />
+    <Compile Include="ListManager.cs" />
+    <Compile Include="ClrMameProParser.cs" />
+    <Compile Include="Platforms.cs" />
+    <Compile Include="Platforms\Platform_FDS.cs" />
+    <Compile Include="Platforms\Platform_Genesis.cs" />
+    <Compile Include="Platforms\Platform_NES.cs" />
+    <Compile Include="Platforms\Platform_SNES.cs" />
+    <Compile Include="Platforms\Platform_Unknown.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Config\ProgramConfig.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Res.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Res.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RomData.cs" />
+    <Compile Include="RomDB.cs" />
+    <Compile Include="ConsoleTools\SNES.cs" />
+    <Compile Include="Util.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UI\DBEdit.resx">
+      <DependentUpon>DBEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmBusy.resx">
+      <DependentUpon>frmBusy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmDBConfig.resx">
+      <DependentUpon>frmDBConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmError.resx">
+      <DependentUpon>frmError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmPlatformPrompt.resx">
+      <DependentUpon>frmPlatformPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\HashForm.resx">
+      <DependentUpon>HashForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Res.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Res.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\snes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_ds.png" />
+    <None Include="Resources\logo_gamegear.png" />
+    <None Include="Resources\logo_sms.png" />
+    <None Include="Resources\logo_ngp.png" />
+    <None Include="Resources\ship.png" />
+    <None Include="Resources\Pacman.gif" />
+    <None Include="Resources\logo_n64.png" />
+    <None Include="Resources\gba.png" />
+    <None Include="Resources\GB.png" />
+    <Compile Include="UI\BufferedListbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\frmBusy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmBusy.Designer.cs">
+      <DependentUpon>frmBusy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmPlatformPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmPlatformPrompt.Designer.cs">
+      <DependentUpon>frmPlatformPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsoleTools\GBA.cs" />
+    <Compile Include="HashJob.cs" />
+    <Compile Include="ConsoleTools\N64.cs" />
+    <Compile Include="Platforms\Platform_GameGear.cs" />
+    <Compile Include="Platforms\Platform_MasterSystem.cs" />
+    <Compile Include="Platforms\Platform_GB.cs" />
+    <Compile Include="Platforms\Platform_GBA.cs" />
+    <Compile Include="Platforms\Platform_N64.cs" />
+    <Compile Include="Platforms\Platform_NDS.cs" />
+    <Compile Include="Platforms\Platform_NGP.cs" />
+    <Compile Include="RomHash.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ConsoleTools\SMS.cs" />
+    <None Include="Resources\copy_16.png" />
+    <None Include="Resources\Blue Glass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DBs\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
