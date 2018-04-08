@@ -11,3 +11,7 @@ Drag and drop a file into the window or use the toolbar to open a file. You may 
 For RHDN submissions, the text displayed on the right can be copied for ROM/ISO information. This includes the corresponding No-Intro database match, if found. (Additional databases may be installed, e.g. TOSEC).
 
 Additional detailed information is also shown below.
+
+## Databases
+
+By default, ROM Hasher includes a copy of the No-Intro database. For more up-to-date or alternative databases, you may want to visit [No-Intro's DAT-o-Matic](http://datomatic.no-intro.org/) or [TOSEC](https://www.tosecdev.org/). Make sure you're obtaining Clr-Mame-Pro-formatted databases, and add them using the `Database Config` dialog found in the settings menu to add them.
