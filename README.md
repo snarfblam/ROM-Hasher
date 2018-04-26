@@ -1,6 +1,6 @@
 # ROM Hasher
 
-File-at-a-time auditing tool for ROM images. Validates and/or calculates hashes for ROM images. The primary intended use of ROM Hasher is for validating files before publishing patches or before applying them.
+File-at-a-time auditing tool for ROM images: calculates hashes and validates ROM images. When creating patches, use ROM Hasher to identify the original ROM to be patched. When applying patches, use ROM Hasher to verify the correct ROM is being patched.
 
 [Download the binary at RHDN](https://www.romhacking.net/utilities/1002/).
 
