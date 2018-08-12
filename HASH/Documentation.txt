@@ -1,0 +1,68 @@
+﻿Configuration
+	-The primary function of this program is to verify and hash ROMs for RHDN
+		-By default, the program is configured to use No-Intro
+		-The program is configured to summarize and highlight information specific for RHDN's ROM/ISO information and related fields
+			-Configuration is manually editable with a text editor
+		-Databases configuration can be modified within the program. Support for additional databases is detailed below.
+		-The program is otherwise not extensible or configurable
+
+Platform Detection
+	-ROM is identified by contents if possible (detailed below)
+	-If a single platform can not be identified unambiguously, known ROM extensions are used to determine platform
+	-If the above two methods fail, the platform is considered unknown
+	-NES
+		-Check for INES header
+	-SNES
+		-Check for SMC header, or confirm checksum for sufficiently small ROMs
+	-Genesis
+		-Check for internal header
+	-FDS
+		-Check for FDS header
+	-GB/GBA
+		-Check for "GameBoy" logo in internal header
+	-SMS/GG
+		-Check for internal header
+	-N64
+		-Check for standard values at start of ROM
+	-NDS
+		-Confirm header CRC
+	-NGP
+		-Identify standard license/copyright text in internal header
+
+ROM Hash Calculation
+	-Helps identify right-ROM-wrong-format, bad/junk external header, and similar scenarios
+	-Some ROM DBs use hashes of ROM images rather than containing files
+	-All systems listed below have been tested to some extent with No-Intro
+	-In most, but not all, cases, internal headers are not used to properly identify overdump even when it would be possible.
+	-NES
+		-If header present, it is stripped, and ROM hash is the lesser of either: [1] the entire remaining data, or [2] an amount of data from the beginning of the ROM specified by the sum of the PRG and CHR size as identified in the header
+		-If no header is present, the whole file is hashed
+		-Trainers, overdumps, and misc. garbage at end of file may corrupt hash
+	-SNES
+		-SMC header is stripped if present, remainder is hashed
+	-Genesis
+		-Rom if converted from SMD to BIN if necessary (de-header, de-interleave)
+		-Remained is hashed
+	-FDS
+		-Header is stripped, remainder is hashed
+	-N64
+		-If byte-swapping is detected, ROM is un-byte-swapped
+		-Result is hashed
+	-Most platforms do not have external headers
+		-For SMS, GG, GB,GBA, NDS, NGP the file hash is also the ROM hash
+
+Supported DBs/Formats
+	-Currently, only ClrMamePro DATs are supported
+	-Any compliant DAT is supported for any system
+		-"compliant" is not incredibly well defined
+		-Some DBs might have needs that are not supported by ROM Hasher
+			-e.g. No-Intro uses hashes for byte-swapped N64 ROMs because this is how they are physically stored in N64 ROMs.
+			-This particular circumstance is supported because ROM Hasher is geared toward No-Intro, but similar situations will cause problems with other DBs
+		-For game platforms without built-in support for calculating ROM hashes, only databases that include file hashes are supported
+		-No-Intro DBs for common platforms are included with the utility
+			-Uses ROM hashes
+			-Additional/updated No-Into DBs can not be used for systems without built-in ROM hash support
+				-Unless ROM hashes match file hashes in No-Intro's DB for the given platform (i.e. no header/interleaving/etc issues)
+		-TOSEC can be used
+			-Uses file hashes
+			-Can be used for any system, but will not identify right-ROM-wrong-format cases and similar

@@ -152,6 +152,8 @@
     <None Include="Resources\nes.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Documentation.txt" />
+    <Content Include="History.txt" />
     <None Include="Resources\logo_ds.png" />
     <None Include="Resources\logo_gamegear.png" />
     <None Include="Resources\logo_sms.png" />
@@ -192,9 +194,6 @@
     <Compile Include="ConsoleTools\SMS.cs" />
     <None Include="Resources\copy_16.png" />
     <None Include="Resources\Blue Glass.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DBs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

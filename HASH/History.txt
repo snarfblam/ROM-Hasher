@@ -1,0 +1,42 @@
+﻿9/14/2013
+	-Program config and DB config now serialized (and used!)
+	-Added Database configurer dialog
+	-DBs are now loaded from external files based on DB config (cached to "app-dir\DBs\" folder)
+	-Preffered DB added to program config (to allow user to change from No-Intro)
+	-Added error details dialog
+
+9/15/2013
+	-Now respects hash specified in DB config (ROM vs File) when parsing ClrMamePro DATs (important because No-Intro uses ROM hashes, TOSEC uses file hashes)
+	
+9/16/2013
+	-Genesis internal header now decoded and displayed in tab
+	-Added 'ImportantFields' to program config, which will be shown in bold in the details display.
+	-Can now copy entries from the details tabs
+
+10/7/2013
+	-Added GB.cs (utility methods) and Platform_GB.cs
+10/8/2013
+	-Added GBA.cs and Platform_GBA.cs
+	-Added SMS.cs, Platform_MasterSystem.cs, Platform_GameGear.cs
+10/9/2013
+	-Added N64.cs, Platform_N64.cs
+10/10/2013
+	-Moved hashing code to a separate thread
+		-display "hashing animation" while working (for longer running processes)
+		-User can press escape to abort long running process 
+		-User can not open additional files while hashing is in progress
+	-N64 hashing is now multi-threaded
+	-Added Platform_NDS, Platform_NGP
+	-DS hashing is multi-threaded
+	-Added platform disambiguation dialog
+	-Added "Hashing" animation for long-running hash jobs
+10/11/2013
+	-Platform disambiguation dialog is presented if platform is not auto-detected, or if user performs "Open As"
+	-Databases are now re-loaded after configuration
+	-Databases can now be configured to work with "Unknown" and misc platforms.
+	-Fixed some bugs with out-of-range access on files that are unexpectedly small
+	-Rewrote all Platform.CalculateHashes methods to delegate actual work to HashJob, which can omit unneeded hashes and help manage multithreaded execution.
+	-Extensive organization/code documentation
+	
+10/12/2013
+	-Fixed race condition in multi-threaded task queue

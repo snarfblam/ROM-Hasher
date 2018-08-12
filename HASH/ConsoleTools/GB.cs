@@ -236,9 +236,9 @@ namespace HASH.ConsoleTools
         Size_16_banks = 0x03,
         [Description("$04 - 512 KByte (32 banks)")]
         Size_32_banks = 0x04,
-        [Description("$06 -   2 MByte (128 banks)")]
-        Size_64_banks = 0x05,
         [Description("$05 -   1 MByte (64 banks)")]
+        Size_64_banks = 0x05,
+        [Description("$06 -   2 MByte (128 banks)")]
         Size_128_banks = 0x06,
         [Description("$07 -   4 MByte (256 banks)")]
         Size_256_banks = 0x07,
