@@ -265,7 +265,11 @@ namespace HASH
 
                     // First No-Intro match is considered canonical
                     if (isPreferredDb & preferredDbNotFound) {
-                        summary.AppendLine(preferredDB + " Name: " + EntryMatches[iMatch].Entry.name);
+                        //summary.AppendLine(preferredDB + " Name: " + EntryMatches[iMatch].Entry.name);
+                        summary.AppendLine("Database match: " + EntryMatches[iMatch].Entry.name);
+                        var platforms = String.Join(", ", EntryMatches[iMatch].Database.Platforms.ConvertAll<string>(plat => plat.ToString()).ToArray());
+                        summary.AppendLine("Database: " + EntryMatches[iMatch].Database.Name + ": " + platforms + " (v. " +  EntryMatches[iMatch].Database.Version + ")");
+
                         preferredDbNotFound = false;
                     } else {
                         if (isPreferredDb) {
@@ -338,8 +342,8 @@ namespace HASH
 
             while (hashes.Count > 0) {
                 // Grab last hash
-                var hash = hashes[hashes.Count - 1];
-                hashes.RemoveAt(hashes.Count - 1);
+                var hash = hashes[0];
+                hashes.RemoveAt(0);
 
                 // For ROM/FILE hashes, if two are the same, we want to report them as one 
                 // Example: a headerless SNES ROM will have identical file and ROM hashes because the file is a plain ROM image, 

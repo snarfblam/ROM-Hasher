@@ -18,8 +18,7 @@ namespace HASH.Config
         public static ProgramConfig CreateDefaultConfig() {
             ProgramConfig result = new ProgramConfig();
             // Prefer SHA-1 for both ROM and file
-            result.RhdnPreferredHashes.Add(HashFlags.SHA1 | HashFlags.RomHash);
-            result.RhdnPreferredHashes.Add(HashFlags.FileHash | HashFlags.SHA1);
+            SetDefaultHashes(result);
 
             result.ImportantFields.Add("General/ROM Format");
             result.ImportantFields.Add("General/External Header");
@@ -32,6 +31,13 @@ namespace HASH.Config
 
             result.PreferredDatabaseName = "No-Intro";
             return result;
+        }
+
+        private static void SetDefaultHashes(ProgramConfig result) {
+            result.RhdnPreferredHashes.Add(HashFlags.FileHash | HashFlags.SHA1);
+            result.RhdnPreferredHashes.Add(HashFlags.FileHash | HashFlags.CRC32);
+            result.RhdnPreferredHashes.Add(HashFlags.CRC32 | HashFlags.RomHash);
+            result.RhdnPreferredHashes.Add(HashFlags.SHA1 | HashFlags.RomHash);
         }
 
         /// <summary>
@@ -82,6 +88,19 @@ namespace HASH.Config
         /// incremented if new versions of the software make modifications to identify and potentially
         /// account for the discrepancy.
         /// </summary>
-        internal const int CurrentProgramConfigVersion = 0;
+        internal const int CurrentProgramConfigVersion = 1;
+
+        public void UpdateToCurrentVersion() {
+            // Changes:
+            //   Version 1:
+            //     - Adding CRC32 to preferred hash list
+
+            if (ProgramConfigVersion < 1) {
+                RhdnPreferredHashes.Clear();
+                SetDefaultHashes(this);
+
+                ProgramConfigVersion = 1;
+            }
+        }
     }
 }

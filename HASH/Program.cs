@@ -129,6 +129,10 @@ namespace HASH
                             return;
                         }
                     }
+
+                    if (Config != null) {
+                        Config.UpdateToCurrentVersion();
+                    }
                 }
             }
         }
