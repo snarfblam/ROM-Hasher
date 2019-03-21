@@ -36,8 +36,8 @@ namespace HASH.Config
         private static void SetDefaultHashes(ProgramConfig result) {
             result.RhdnPreferredHashes.Add(HashFlags.FileHash | HashFlags.SHA1);
             result.RhdnPreferredHashes.Add(HashFlags.FileHash | HashFlags.CRC32);
-            result.RhdnPreferredHashes.Add(HashFlags.CRC32 | HashFlags.RomHash);
             result.RhdnPreferredHashes.Add(HashFlags.SHA1 | HashFlags.RomHash);
+            result.RhdnPreferredHashes.Add(HashFlags.CRC32 | HashFlags.RomHash);
         }
 
         /// <summary>
